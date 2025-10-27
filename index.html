@@ -12,11 +12,25 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    /* 🔹 Background Video */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.25;
+    }
+
     body {
-      background-color: #0d0d0d;
       color: #fff;
       text-align: center;
       padding: 20px;
+      background-color: #0d0d0d;
+      position: relative;
+      z-index: 1;
     }
 
     h1, h2, h3 {
@@ -48,29 +62,22 @@
     }
 
     .experience, .skills {
-      background: #1a1a1a;
+      background: rgba(26, 26, 26, 0.8);
       border-radius: 12px;
       padding: 25px;
       margin: 20px auto;
       width: 90%;
       max-width: 600px;
       box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
     }
 
-    .button {
-      background-color: #00bfff;
-      color: #fff;
-      padding: 10px 25px;
-      border-radius: 20px;
-      font-weight: bold;
-      margin-top: 10px;
-      display: inline-block;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      background-color: #0099cc;
+    /* 🔹 Glow on Hover */
+    .experience:hover, .skills:hover {
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.9);
+      transform: scale(1.02);
     }
 
     .contact-info {
@@ -78,7 +85,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       margin-top: 15px;
     }
 
@@ -90,27 +97,45 @@
       font-size: 1.1em;
     }
 
-    .contact-item img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .contact-item img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
-    }
-
     .contact-item a {
       color: #00bfff;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       transition: 0.3s;
     }
 
     .contact-item a:hover {
-      text-decoration: underline;
       color: #0099cc;
+      text-decoration: underline;
+    }
+
+    .contact-item img {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* ✨ Custom glow for each platform */
+    .contact-item img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Instagram hover: Blue glow */
+    .contact-item a[href*="instagram.com"] img:hover {
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+    }
+
+    /* WhatsApp hover: Green glow */
+    .contact-item a[href*="wa.me"] img:hover {
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+    }
+
+    /* YouTube hover: Red glow */
+    .contact-item a[href*="youtube.com"] img:hover {
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
     }
 
     footer {
@@ -122,8 +147,14 @@
 </head>
 <body>
 
+  <!-- 🔹 Background Video -->
+  <video autoplay loop muted playsinline id="bg-video">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
   <h2>OUR PORTFOLIO</h2>
- <img src="image.jpeg" alt="FT.JUDWAA Logo" width="150" style="border-radius:15px; margin-top:10px;">
+  <img src="Artboard_1.jpg" alt="FT.JUDWAA Logo" width="400" style="border-radius:15px; margin-top:10px;">
 
   <h1>FT.JUDWAA</h1>
 
@@ -134,6 +165,7 @@
     <h3>OF EXPERIENCE</h3>
   </div>
 
+  <!-- 🔹 Experience Section -->
   <div class="experience">
     <h2><i>EXPERIENCE HIGHLIGHT</i></h2>
     <p>• Provided <b>Live Commentary</b> for high profile tournaments</p>
@@ -141,6 +173,7 @@
     <p class="highlight">Cast many professional events</p>
   </div>
 
+  <!-- 🔹 Skills Section -->
   <div class="skills">
     <h2><i>KEY SKILLS</i></h2>
     <ul style="list-style:none; line-height:1.8;">
@@ -158,14 +191,22 @@
       <div class="contact-item">
         <a href="https://instagram.com/ft_judwaa" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+          FT_JUDWAA
         </a>
-        <a href="https://instagram.com/ft_judwaa" target="_blank">FT_JUDWAA</a>
       </div>
+
       <div class="contact-item">
         <a href="https://wa.me/917888948585" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+          +91 7888948585
         </a>
-        <a href="https://wa.me/917888948585" target="_blank">+91 7888948585</a>
+      </div>
+
+      <div class="contact-item">
+        <a href="https://youtube.com/@ftjudwaa?si=nwOsr125u6QgrJf0" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+          FT.JUDWAA
+        </a>
       </div>
     </div>
   </div>
@@ -176,6 +217,3 @@
 
 </body>
 </html>
-
-
-
